@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            #pimage{
+                width:30% !important ;
+            }
+            #aboutme{
+                padding:5px;
+                font-size:1rem;
+            }
+            .personimage{
+                width:40px !important;
+                height:45px !important;
+            }
+            .personimage1{
+                width:50px !important;
+                height:55px !important;
+            }
+            .personimage3{
+                width:70px !important;
+                height:75px !important;
+            }
+            .personimage5{
+                width:60px !important;
+                height:65px !important;
+            }
+        </style>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <script src = "{% static 'network/script.js' %}"></script>
+    </head>
+    <body>
+       
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+              
+                <div>
+                <img id = "x" src="{% static 'network/network.png' %}" alt="">
+                  <ul >
+
+
+                
+                    <li class="nav-item">
+                        <a class="{%block fill %}{%endblock%}" href="#">{{user.username}}</a>
+                    </li>
+             
+                <li class="nav-item">
+                    <a class = "{%block follow %}{%endblock%}" class="nav-link" href="#"> Following </a>
+                </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'index' %}">All Posts</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                  </ul>
+                </div>
+                
+                    {% if user.is_authenticated %}
+                    <div class="bottom">
+                 
+                        {% block bottom %}
+                        {% endblock%}
+                
+                </div>
+                {% endif %}
+                
+              </nav>
+              
+                <div class="container-fluid">
+                    {% block body %}
+                    {% endblock %}
+               <div id="right">
+                    <h2>Suggested content</h2>
+                    <div class="cs50">
+                        <h3><a target = "_blank" href="https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home">About Me</a></h3>
+                        <img id = "pimage" src="{%static 'network/profile.jpg'%}" alt="">
+                        <p id="aboutme">I am Nathnael Tamirat. The tech field has been my passion since childhood, so I consider myself lucky to work on something I love and enjoy. Currently, I am a full-stack developer and a Google UX-certified UI designer. My strengths lie in my flexibility and commitment.
+
+                            I have hands-on experience with Django, Express, Flask, and Node.js, and I am also experienced in API testing and development using Postman. For database management, I have worked with SQL technologies like SQLite3 and PostgreSQL. On the frontend, I have experience with frameworks like Bootstrap and jQuery.
+                            
+                            Although anyone can learn new skills, I believe that teamwork and continuous learning are the keys to success.
+                        </p>
+                            
+                    </div>
+                    <div class="cs50">
+                        <h3><a target = "_blank" href="https://learning.edx.org/course/course-v1:HarvardX+CS50P+Python/home">Contact me</a></h3>
+                        <ul class="social-media-links">
+                            <li><a target="_blank" href="https://t.me/NathnaelDev"><img src="{% static 'network/telegram.svg'%}" alt=""></a></li>
+                            <li><a target="_blank" href="https://X.com/NathnaelDev"><img src="{% static 'network/x.svg'%}" alt=""></a></li>
+                            <li><a target="_blank" href="https://linkedin.com/in/Nathnael-Tamirat"><img src="{% static 'network/linkedin.svg'%}" alt=""></a></li>
+                            <li><a target="_blank" href="https://www.github.com/nathnael1"><img src="{% static 'network/github.svg'%}" alt=""></a></li>
+                        </ul> 
+
+                            
+                    </div>
+               </div>
+            </div>
+             
+
+       
+        <script>
+            const rightElement = document.getElementById("right");
+            let counter = 0
+            document.addEventListener("scroll", function() {
+                rightElement.style.height = (window.innerHeight+window.scrollY)+'px'; 
+
+
+            });
+            console.log(window.scrollY)
+        </script>
+
+    </body>
+</html>
