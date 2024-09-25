@@ -1,4 +1,4 @@
-# PRODIGY_FSWD_05
+# CodeAlpha_Social-Media-Platform
 
 ## Overview
 Social Media Application: This web application allows users to create profiles, and engage with content through likes and comments. The intuitive user interface is designed to enhance user engagement with features
@@ -12,10 +12,10 @@ Social Media Application: This web application allows users to create profiles, 
 ## Setup
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/nathnael1/PRODIGY_FSWD_05.git
+   git clone https://github.com/nathnael1/CodeAlpha_Social-Media-Platform.git
 2. Navigate to the project directory  
     ```sh
-    cd PRODIGY_FSWD_05/socialmedia
+    cd CodeAlpha_Social-Media-Platform/socialmedia
 3. Apply the migrations  
     ```sh
     python manage.py migrate
